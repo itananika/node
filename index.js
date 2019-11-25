@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
-mongoose
+/* mongoose
   .connect(
     'mongodb://mongo:27017/docker-node-mongo',
     { useNewUrlParser: true }
@@ -32,6 +32,19 @@ app.post('/item/add', (req, res) => {
 
   newItem.save().then(item => res.redirect('/'));
 });
+*/
+
+
+
+app.get('/', (req, res) =>
+  Promise.resolve([{name: (new Date()).getTime()}])
+    .then(items => res.render('index', { items }))
+);
+
+app.post('/item/add', (req, res) =>
+  Promise.resolve([{name: req.body.name + '  -> ' + (new Date()).getTime()}])
+    .then(items => res.render('index', { items }))
+);
 
 const port = 3000;
 
