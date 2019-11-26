@@ -34,7 +34,8 @@ app.post('/item/add', (req, res) => {
 });
 
 
-/* app.get('/', (req, res) =>
+/*
+app.get('/', (req, res) =>
   Promise.resolve([{name: (new Date()).getTime()}])
     .then(items => res.render('index', { items }))
 );
