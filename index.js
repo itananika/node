@@ -9,9 +9,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
+console.log('process.env.DB_HOST', process.env.DB_HOST);
 mongoose
   .connect(
-    'mongodb://' + process.env.DB_HOST + ':27017/docker-node-mongo',
+    'mongodb://mongo:27017/docker-node-mongo',
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))
